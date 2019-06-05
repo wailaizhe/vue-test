@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component_v-once</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+</head>
+<style>
+    .v-enter,.v-leave-to{
+         opacity: 0;
+    }
+    .v-enter-active,.v-leave-active{
+        transition: opacity 3s;
+    }
+    
+
+</style>
+<body>
+    <div id="root">
+        <transition  name="fade">
+                <child-one v-if="type==='child-one'"></child-one>
+        </transition>
+        
+
+     <!-- <child-one v-if="type==='child-one'"></child-one>
+     <child-two v-if="type==='child-two'"></child-two>
+      -->
+      <button @click="handleClick">click</button>
+
+      <hr>
+      <transition  enter-active-class=" animated swing" 
+                   leave-active-class= "animated shake "
+    >
+            <child-two v-if="type==='child-two'"></child-two>
+    </transition>
+
+  <button @click="handleClick">click</button>
+
+
+    <transition-group>
+        <div v-for=" item of list" :key="item.id">{{item.title}}</div>
+    
+    </transition-group>
+    <button @click="addClick">add</button>
+  </div>
+    
+</body>
+<script>
+    Vue.component('child-one',{
+       
+
+        template: '<div v-once> child-one </div> '
+    });
+    Vue.component('child-two',{
+       
+
+       template: '<div v-once> child-two </div> '
+   });
+   var count=0;
+   vm =new Vue({
+       el:"#root",
+       data: {
+           type: "child-one",
+           list: [],
+       },
+       methods: {
+        handleClick: function () {
+            this.type= this.type === "child-one" ?"child-two": "child-one";
+
+        },
+        addClick : function () {
+            this.list.push({
+                id: count++,
+                title: "hello world"
+            });
+
+        }
+       },
+   });
+</script>
+</html>

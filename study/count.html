@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>求和</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+    <div id="root">
+        <counter ref="one" @change="sumTotal"></counter>
+        <counter ref="two" @change="sumTotal"></counter>
+        <div>{{countNum}}</div>
+
+    </div>
+    
+</body>
+<script>
+  
+    Vue.component("counter",{
+        data : function() {
+            return {
+                number: 0
+            }
+        },
+        template: "<div @click='increateBtn'>{{number}}</div>",
+        methods: {
+            increateBtn: function() {
+                this.number++;
+                this.$emit("change");
+
+            }
+        },
+    });
+    // 组件一定声明要先与实例
+
+    var vm = new Vue({
+        el : "#root",
+        data: {
+            countNum: 0
+        },
+        methods: {
+            sumTotal: function() {
+                
+                this.countNum=this.$refs.one.number + this.$refs.two.number ;
+
+            }
+        }
+    });
+</script>
+</html>

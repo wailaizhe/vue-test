@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>set_get</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <style>
+    .activited{
+        color: red ;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+        <div @click="handleClick"  :class="{activited: isActivited}" >
+            Hello World
+        </div>
+
+        <div @click="handleDivClick"  :class="[activited]" >
+                Hello World 2
+            </div>
+
+        <div @click="handleDivClick3"  :style="styleObj" >
+                Hello World 3
+            </div>
+    </div>
+    
+</body>
+<script>
+  var vm = new Vue ({
+      el: "#app",
+      data: {
+        isActivited: false,
+        activited: "",
+        styleObj: {
+            color: "" 
+        }
+      },
+      methods: {
+        handleClick: function() {
+              this.isActivited=!this.isActivited;
+          },
+          handleDivClick: function(){
+              this.activited= this.activited==="activited"?"":"activited";
+          },
+          handleDivClick3: function () {
+              this.styleObj.color= this.styleObj.color==="red"?"":"red";
+          }
+      },
+
+      
+  })
+</script>
+</html>

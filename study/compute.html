@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    {{fullName}}
+    {{age}}
+<hr>
+    {{fullName2()}}
+    {{age}}
+</div>    
+</body>
+
+<script>
+  var vm = new  Vue({
+     el : "#app",
+     data : {
+        firstName : "Li",
+        lastName : "Bai",
+        fullName: "Li Bai",
+        age : 24
+     },
+    //  computed: {
+    //      fullName : function () {
+    //          console.log("computed 计算了一次");
+    //          return this.firstName + " " + this.lastName;
+    //      }
+
+    //  },
+     methods: {
+         fullName2 : function (){
+            console.log(" methods 计算了一次");
+             return this.firstName + " " + this.lastName;
+         }
+     },
+     watch: {
+         firstName: function () {
+            console.log(" watch 计算了一次");
+             return this.firstName + " " + this.lastName;
+         },
+         lastName: function () {
+            console.log(" watch 计算了一次");
+             return this.firstName + " " + this.lastName;
+         }
+     },
+
+  });
+</script>
+
+</html>

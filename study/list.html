@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <title>遍历数组</title>
+</head>
+<body>
+    <div id="app">
+
+        <div v-for="item in dataList" :key="item.id">
+            
+            {{item.text}}-----{{item.id}}
+        </div>
+        <div v-for=" (item,key,index) of userInfo">
+            {{key}}----{{item}}---{{index}}
+        </div>
+    </div>
+</body>
+<script>
+   var vm=new Vue({
+       el: "#app",
+       data: {
+           dataList: [
+               {id:"1",text:"hello"},
+               {id:"2",text:"hello2"},
+               {id:"3",text:"hello3"},
+               {id:"4",text:"hello4"},
+           
+           ],
+           userInfo:{
+               userName: "lisi",
+               age: 28,
+               sex: "男"
+
+           }
+       }
+   });
+
+ Vue.set(vm.userInfo,"address","beijing");
+ vm.$set(vm.userInfo,"salary",3000);
+</script>
+</html>

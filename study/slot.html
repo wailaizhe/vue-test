@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>插槽</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+    <div id="root">
+
+     <child >
+         <div slot="header">header</div>
+         <div slot="footer">footer</div>
+        <p>li</p>
+     </child>
+    </div>
+    
+</body>
+<script>
+    Vue.component('child',{
+        props: ['content'],
+
+        template: '<div> <slot name="header"></slot> hell <slot name="footer"></slot> </div> '
+    });
+   vm =new Vue({
+       el:"#root"
+   });
+</script>
+</html>
