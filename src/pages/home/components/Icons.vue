@@ -1,11 +1,15 @@
 <template>
   <div class="icons">
-    <div class="icon" v-for="item of imgList" :key="item.id">
-      <div  class="icon-img" >
-        <img class="icon-image" :src="item.imgUrl" />
-      </div>
-      <div class="icon-des">{{item.iconDes}}</div>
-    </div>
+    <swiper :options="swiperOption">
+      <swiper-slide v-for="(page,index) of pages" :key="index">
+        <div class="icon" v-for="item of page" :key="item.id">
+          <div  class="icon-img" >
+            <img class="icon-image" :src="item.imgUrl" />
+          </div>
+          <div class="icon-des">{{item.iconDes}}</div>
+        </div>
+      </swiper-slide>
+    </swiper>
   </div>
 </template>
 
@@ -14,7 +18,10 @@ export default {
   name: 'HomeIcons',
   data () {
     return {
-      imgList: [{
+      swiperOption: {
+        loop: false
+      },
+      iconList: [{
         id: '001',
         imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
         iconDes: '景点门票'
@@ -53,9 +60,33 @@ export default {
         id: '008',
         imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20195/35d83bb968d80d54926f30cfb92cb6ff.png',
         iconDes: '限时抢购'
+      },
+      {
+        id: '009',
+        imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20194/b4511345827006994aa1980a3886f0ac.png',
+        iconDes: '世博园'
+      },
+      {
+        id: '010',
+        imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/338c5b924c5809e8c7b14f60a953c3e2.png',
+        iconDes: '欢乐谷'
       }
       ]
     }
+  },
+  computed: {
+    pages () {
+      const pages = []
+      this.iconList.forEach((item, index) => {
+        const page = Math.floor(index / 8)
+        if (!pages[page]) {
+          pages[page] = []
+        }
+        pages[page].push(item)
+      })
+      return pages
+    }
+
   }
 }
 </script>
