@@ -7,6 +7,7 @@
     <div class="swiper-pagination"  slot="pagination"></div>
   </swiper>
 </div>
+
 </template>
 
 <script>
@@ -25,7 +26,16 @@ export default {
       {
         id: '002',
         imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20196/5f6eaa320a5e9bc02e6ab12ba3c2841a.jpg_750x200_291d4dad.jpg'
-      }]
+      },
+      {
+        id: '003',
+        imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20195/aef5f8864f5a1167599609307571b2c4.jpg_750x200_db7bedbe.jpg'
+      },
+      {
+        id: '004',
+        imgUrl: 'http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20195/6ab65be3878a5ea365514cf3a8125fd1.jpg_750x200_7b2fe404.jpg'
+      }
+      ]
     }
   }
 }
@@ -33,7 +43,7 @@ export default {
 
 <style lang="stylus" scoped>
 .swiper >>> .swiper-pagination-bullet-active
-  background: #fff
+  background: red
 .swiper
   overflow: hidden
   width: 100%

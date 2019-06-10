@@ -9,6 +9,7 @@
           <div class="icon-des">{{item.iconDes}}</div>
         </div>
       </swiper-slide>
+      <div class="swiper-pagination"  slot="pagination"></div>
     </swiper>
   </div>
 </template>
@@ -19,7 +20,8 @@ export default {
   data () {
     return {
       swiperOption: {
-        loop: false
+        loop: false,
+        pagination: '.swiper-pagination'
       },
       iconList: [{
         id: '001',
@@ -91,10 +93,14 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+.icons >>> .swiper-pagination-bullets-active
+  background: blue
+.icons >>> .swiper-pagination-bullets
+  bottom: -2px
 .icons
   overflow: hidden
   height: 0
-  padding-bottom: 50%
+  padding-bottom: 52%
   .icon
     position: relative
     float: left
