@@ -85,5 +85,5 @@ export default {
         color: #fff
         background: #ff9300
         padding: 0 10 px
-        border-radius: .08rem
+        border-radius: 3px
 </style>
